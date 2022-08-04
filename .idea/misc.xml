@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="DesignSurface">
+    <option name="filePathToZoomLevelMap">
+      <map>
+        <entry key="..\:/Whatzup/app/src/main/res/drawable/textbox_outline.xml" value="0.1555" />
+        <entry key="..\:/Whatzup/app/src/main/res/layout/activity_main.xml" value="0.22826086956521738" />
+        <entry key="..\:/Whatzup/app/src/main/res/layout/activity_otp.xml" value="0.4" />
+        <entry key="..\:/Whatzup/app/src/main/res/layout/activity_otpactivity.xml" value="0.537525354969574" />
+        <entry key="..\:/Whatzup/app/src/main/res/layout/activity_phone_number.xml" value="0.25" />
+        <entry key="..\:/Whatzup/whatzup/app/src/main/res/drawable/receive_drawable.xml" value="0.168" />
+        <entry key="..\:/Whatzup/whatzup/app/src/main/res/drawable/sent_drawable.xml" value="0.168" />
+        <entry key="..\:/Whatzup/whatzup/app/src/main/res/layout/activity_chat.xml" value="0.22826086956521738" />
+        <entry key="..\:/Whatzup/whatzup/app/src/main/res/layout/activity_main.xml" value="0.22826086956521738" />
+        <entry key="..\:/Whatzup/whatzup/app/src/main/res/layout/activity_phone_number.xml" value="0.22826086956521738" />
+        <entry key="..\:/Whatzup/whatzup/app/src/main/res/layout/activity_setup_profile.xml" value="0.22826086956521738" />
+        <entry key="..\:/Whatzup/whatzup/app/src/main/res/layout/item_receive.xml" value="1.0" />
+        <entry key="..\:/Whatzup/whatzup/app/src/main/res/layout/item_sent.xml" value="0.6" />
+        <entry key="..\:/github/whatzup/app/src/main/res/drawable/circle_green.xml" value="0.2315" />
+        <entry key="..\:/github/whatzup/app/src/main/res/layout/activity_chat.xml" value="0.4" />
+        <entry key="..\:/github/whatzup/app/src/main/res/layout/activity_main.xml" value="0.4" />
+        <entry key="..\:/github/whatzup/app/src/main/res/layout/row_conversation.xml" value="0.536" />
+        <entry key="..\:/github/whatzup/app/src/main/res/menu/menu.xml" value="0.25416666666666665" />
+        <entry key="..\:/github/whatzup/app/src/main/res/menu/topmenu.xml" value="0.25416666666666665" />
+      </map>
+    </option>
+  </component>
+  <component name="ProjectRootManager" version="2" languageLevel="JDK_11" default="true" project-jdk-name="Android Studio default JDK" project-jdk-type="JavaSDK">
+    <output url="file://$PROJECT_DIR$/build/classes" />
+  </component>
+  <component name="ProjectType">
+    <option name="id" value="Android" />
+  </component>
+</project>

@@ -1,6 +1,8 @@
 package com.corona.whatzup.Activities;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.recyclerview.widget.LinearLayoutManager;
 
 import android.os.Bundle;
 import android.view.View;
@@ -11,7 +13,10 @@ import com.corona.whatzup.Models.Message;
 import com.corona.whatzup.databinding.ActivityChatBinding;
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
 
 import java.util.ArrayList;
 import java.util.Date;
@@ -34,15 +39,40 @@ public class ChatActivity extends AppCompatActivity {
 
         messages = new ArrayList<>();
         adapter = new MessagesAdapter(this, messages);
+        binding.recycleView.setLayoutManager(new LinearLayoutManager(this));
+        binding.recycleView.setAdapter(adapter);
 
         String name = getIntent().getStringExtra("name");
         String receiverUid = getIntent().getStringExtra("uid");
         String senderUid = FirebaseAuth.getInstance().getUid();
 
         senderRoom = senderUid + receiverUid;
-        senderRoom = receiverUid + senderUid;
+        receiverRoom = receiverUid + senderUid;
 
         database = FirebaseDatabase.getInstance();
+
+        database.getReference().child("chats")
+                .child(senderRoom)
+                .child("messages")
+                .addValueEventListener(new ValueEventListener() {
+                    @Override
+                    public void onDataChange(@NonNull DataSnapshot snapshot) {
+                        messages.clear();
+                        for(DataSnapshot snapshot1 : snapshot.getChildren()) {
+                            Message message = snapshot1.getValue(Message.class);
+                            messages.add(message);
+                        }
+
+                        adapter.notifyDataSetChanged();
+
+                    }
+
+                    @Override
+                    public void onCancelled(@NonNull DatabaseError error) {
+
+                    }
+                });
+
 
         binding.sendBtn.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -55,12 +85,14 @@ public class ChatActivity extends AppCompatActivity {
                 database.getReference().child("chats")
                         .child(senderRoom)
                         .child("messages")
+                        .push()
                         .setValue(message).addOnSuccessListener(new OnSuccessListener<Void>() {
                     @Override
                     public void onSuccess(Void avoid) {
                         database.getReference().child("chats")
                                 .child(receiverRoom)
                                 .child("messages")
+                                .push()
                                 .setValue(message).addOnSuccessListener(new OnSuccessListener<Void>() {
                             @Override
                             public void onSuccess(Void avoid) {
@@ -69,6 +101,7 @@ public class ChatActivity extends AppCompatActivity {
                         });
                     }
                 });
+                binding.msgBox.getText().clear();
             }
         });
 

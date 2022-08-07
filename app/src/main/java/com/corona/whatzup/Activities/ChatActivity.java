@@ -38,9 +38,6 @@ public class ChatActivity extends AppCompatActivity {
         setContentView(binding.getRoot());
 
         messages = new ArrayList<>();
-        adapter = new MessagesAdapter(this, messages, senderRoom, receiverRoom);
-        binding.recycleView.setLayoutManager(new LinearLayoutManager(this));
-        binding.recycleView.setAdapter(adapter);
 
         String name = getIntent().getStringExtra("name");
         String receiverUid = getIntent().getStringExtra("uid");
@@ -48,6 +45,10 @@ public class ChatActivity extends AppCompatActivity {
 
         senderRoom = senderUid + receiverUid;
         receiverRoom = receiverUid + senderUid;
+
+        adapter = new MessagesAdapter(this, messages, senderRoom, receiverRoom);
+        binding.recycleView.setLayoutManager(new LinearLayoutManager(this));
+        binding.recycleView.setAdapter(adapter);
 
         database = FirebaseDatabase.getInstance();
 
@@ -82,7 +83,7 @@ public class ChatActivity extends AppCompatActivity {
 
                 Date date = new Date();
                 Message message = new Message(messageTxt, senderUid, date.getTime());
-                binding.msgBox.getText().clear();
+                binding.msgBox.setText("");
 
                 String randomKey =database.getReference().push().getKey();
 

@@ -3,6 +3,8 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
+        <entry key="..\:/Code/Whatzup/app/src/main/res/drawable/receive_drawable.xml" value="0.168" />
+        <entry key="..\:/Code/Whatzup/app/src/main/res/drawable/sent_drawable.xml" value="0.124" />
         <entry key="..\:/Code/Whatzup/app/src/main/res/layout/activity_chat.xml" value="0.22826086956521738" />
         <entry key="..\:/Code/Whatzup/app/src/main/res/layout/item_receive.xml" value="0.22826086956521738" />
         <entry key="..\:/Code/Whatzup/app/src/main/res/layout/item_sent.xml" value="0.22826086956521738" />

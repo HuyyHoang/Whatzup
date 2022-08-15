@@ -59,4 +59,7 @@ dependencies {
     // Reaction for chat
     implementation "com.github.pgreze:android-reactions:1.3"
 
+    // Status
+    implementation 'com.github.3llomi:CircularStatusView:V1.0.1'
+
 }

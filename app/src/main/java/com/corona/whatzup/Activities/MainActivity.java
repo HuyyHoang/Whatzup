@@ -104,6 +104,38 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
+        database.getReference().child("stories").addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot snapshot) {
+                if(snapshot.exists()) {
+                    userStatuses.clear();
+                    for(DataSnapshot storySnapshot : snapshot.getChildren()) {
+                        UserStatus status = new UserStatus();
+                        status.setName(storySnapshot.child("name").getValue(String.class));
+                        status.setProfileImage(storySnapshot.child("profileImage").getValue(String.class));
+                        status.setLastUpdated(storySnapshot.child("lastUpdated").getValue(Long.class));
+
+                        ArrayList<Status> statuses = new ArrayList<>();
+
+                        for(DataSnapshot statusSnapshot : storySnapshot.child("statuses").getChildren()) {
+                            Status sampleStatus = statusSnapshot.getValue(Status.class);
+                            statuses.add(sampleStatus);
+                        }
+
+                        status.setStatuses(statuses);
+                        userStatuses.add(status);
+                    }
+                    //binding.statusList.hideShimmerAdapter();
+                    statusAdapters.notifyDataSetChanged();
+                }
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError error) {
+
+            }
+        });
+
         binding.bottomNavigationView.setOnNavigationItemSelectedListener(new BottomNavigationView.OnNavigationItemSelectedListener() {
             @Override
             public boolean onNavigationItemSelected(@NonNull MenuItem item) {

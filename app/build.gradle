@@ -62,4 +62,7 @@ dependencies {
     // Status
     implementation 'com.github.3llomi:CircularStatusView:V1.0.1'
 
+    // Status View
+    implementation 'com.github.OMARIHAMZA:StoryView:1.0.2-alpha'
+
 }

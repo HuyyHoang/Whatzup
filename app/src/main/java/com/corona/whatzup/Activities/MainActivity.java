@@ -87,14 +87,19 @@ public class MainActivity extends AppCompatActivity {
 
         binding.recycleView.setAdapter(usersAdapter);
 
+        binding.recycleView.showShimmerAdapter();
+        binding.statusList.showShimmerAdapter();
+
         database.getReference().child("users").addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
                 users.clear();
                 for (DataSnapshot snapshot1: snapshot.getChildren()){
                     User user = snapshot1.getValue(User.class);
-                    users.add(user);
+                    if(!user.getUid().equals(FirebaseAuth.getInstance().getUid()))
+                        users.add(user);
                 }
+                binding.recycleView.hideShimmerAdapter();
                 usersAdapter.notifyDataSetChanged();
             }
 
@@ -125,7 +130,7 @@ public class MainActivity extends AppCompatActivity {
                         status.setStatuses(statuses);
                         userStatuses.add(status);
                     }
-                    //binding.statusList.hideShimmerAdapter();
+                    binding.statusList.hideShimmerAdapter();
                     statusAdapters.notifyDataSetChanged();
                 }
             }

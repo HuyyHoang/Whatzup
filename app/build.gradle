@@ -65,4 +65,7 @@ dependencies {
     // Status View
     implementation 'com.github.OMARIHAMZA:StoryView:1.0.2-alpha'
 
+    //RecycleView
+    implementation 'com.github.sharish:ShimmerRecyclerView:v1.3'
+
 }

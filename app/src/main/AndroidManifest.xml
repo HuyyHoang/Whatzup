@@ -32,6 +32,7 @@
         </activity>
         <activity
             android:name=".Activities.MainActivity"
+            android:windowSoftInputMode="stateAlwaysHidden"
             android:exported="false" />
 
         <meta-data
